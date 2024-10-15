@@ -15,9 +15,13 @@ The enterprise test automation framework is designed to provide a robust, scalab
 
 - **Objective:** Enhance test coverage by parameterizing tests with external data.
 
-### 2.3 Logging
+### 2.3 A Logging
 
 - **Objective:** Provide comprehensive logs for detailed test execution analysis.
+
+### 2.3 B Jenkins Integration
+
+-**Objective:** Setup a basic Jenkins pipeline
 
 ### 2.4 Retry Mechanism
 
