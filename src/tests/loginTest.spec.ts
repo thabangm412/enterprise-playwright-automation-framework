@@ -5,7 +5,7 @@ import { encryptEnvFile } from "../utils/EncryptEnvFile";
 import { decrypt } from "../utils/CryptojsUtil";
  
 
-test("test", async ({page}) => {
+test("test", async ({page, browserName}) => {
 
     const loginPage = new LoginPage(page);
 
@@ -17,7 +17,8 @@ test("test", async ({page}) => {
 
     const homePage = await loginPage.clickLoginButton();
     await homePage.expectServiceTitleToBeVisible();
-
+    await page.screenshot({ path: `homepage-`+browserName+`.png`, fullPage: true });
+     
 });
 
 // test("Sample env test", async ({page}) => {
