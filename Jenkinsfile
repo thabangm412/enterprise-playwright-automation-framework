@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('Build') {
             steps {
-                sh '''
+                bat '''
                     npm i -D @playwright/test
                     npx palywrihgt install
                 '''
@@ -11,14 +11,14 @@ pipeline{
         }
         stage('Help') {
             steps {
-                sh '''
+                bat '''
                     npx playwright test --help
                 '''
             }
         }
         stage('Testing') {
             steps {
-                sh '''
+                bat '''
                     npx playwright test --list
                     npx playwright test
                 '''
