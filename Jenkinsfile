@@ -23,12 +23,12 @@ pipeline{
                     npx playwright test
                 '''
             }
-            post {
-                success {
-                    archiveArtifacts(artifacts: 'homepage-*.png', followSymlinks: false)
-                    bat 'del /Q *.png'
-                }
-            }
+            // post {
+            //     success {
+            //         archiveArtifacts(artifacts: '*.png', followSymlinks: false)
+            //         // bat 'del /Q *.png'
+            //     }
+            // }
         }
     }
 }
