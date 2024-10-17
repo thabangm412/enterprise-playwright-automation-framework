@@ -3,9 +3,10 @@ import { test } from "@playwright/test";
 import LoginPage from "../pages/LoginPage";
 import { encryptEnvFile } from "../utils/EncryptEnvFile";
 import { decrypt } from "../utils/CryptojsUtil";
+import HomePage from "../pages/HomePage";
  
 
-test("test", async ({page, browserName}) => {
+test("test: login", async ({page, browserName}) => {
 
     const loginPage = new LoginPage(page);
 
@@ -16,20 +17,24 @@ test("test", async ({page, browserName}) => {
     await loginPage.fillPassword(decrypt(process.env.password!));
 
     const homePage = await loginPage.clickLoginButton();
-    await homePage.expectServiceTitleToBeVisible();
-    await page.screenshot({ path: `homepage-`+browserName+`.png`, fullPage: true });
+    await homePage.expectHomeitleToBeVisible();
+    //await page.screenshot({ path: `homepage-`+browserName+`.png`, fullPage: true });
      
 });
 
-// test("Sample env test", async ({page}) => {
+test("test: contacts navigation", async ({page, browserName}) => {
 
-//     console.log(process.env.NODE_ENV);
-//     console.log(process.env.userid);
-//     console.log(process.env.password);
+    const loginPage = new LoginPage(page);
+    const homePage = new HomePage(page);
 
-// });
+    await loginPage.navigateToLoginPage();
+    await loginPage.fillUsername(decrypt(process.env.userid!));
+    await loginPage.fillPassword(decrypt(process.env.password!));
+    await loginPage.clickLoginButton();
+    await homePage.expectHomeitleToBeVisible();
 
-// test("Sample env test", async ({page}) => {
+    await homePage.navigateToContactsTab();
+     
+});
 
-//     encryptEnvFile();
-// });
+ 
